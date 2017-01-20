@@ -39,6 +39,22 @@ public class LonelyTwitterActivity extends Activity {
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
+
+				Twitter tw=new ImportatTwitter("test string");// beceause abstract can't use twittwe
+				Twitter tw2=new NormalTwitter("test 2");
+				try {
+					if (tw.isImportant())
+						tw.setMessage("better string");
+				}catch (Exception e){
+					throw  new RuntimeException();// when you dont know how to handal the exception
+				}
+
+				String string=tw.getMessage();
+				ArrayList<Twitter>twitterArrayList=new ArrayList<Twitter>();
+				twitterArrayList.add(tw);
+				twitterArrayList.add(tw2);// sub class can add in super class's list
+
+
 				saveInFile(text, new Date(System.currentTimeMillis()));
 				finish();
 

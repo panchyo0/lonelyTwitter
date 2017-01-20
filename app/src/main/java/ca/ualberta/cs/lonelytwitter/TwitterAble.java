@@ -5,4 +5,6 @@ package ca.ualberta.cs.lonelytwitter;
  */
 
 public interface TwitterAble {
+    public String getMessage();
+    public  void  setMessage(String string) throws Exception;
 }
