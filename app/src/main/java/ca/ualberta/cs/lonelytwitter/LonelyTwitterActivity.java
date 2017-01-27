@@ -23,6 +23,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
@@ -40,6 +41,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
+		Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +59,20 @@ public class LonelyTwitterActivity extends Activity {
 				saveInFile();
 			}
 		});
+		//clear button
+
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				setResult(RESULT_OK);
+				//String text = bodyText.getText().toString();
+				tweetList.clear();
+
+				adapter.notifyDataSetChanged();
+
+				saveInFile();
+			}
+		});
+
 	}
 
 	@Override
