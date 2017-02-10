@@ -56,13 +56,17 @@ public class ElasticsearchTweetController {
             verifySettings();
 
             ArrayList<NormalTweet> tweets = new ArrayList<NormalTweet>();
-
-            String query="{\n" +
-                    "    \"query\" : {\n" +
-                    "        \"term\" : { \"message\" :"+search_parameters[0]+" }\n" +
-                    "    }\n" +
-                    "}";
-
+            String query;
+            if (search_parameters[0]==""){
+                query="{\"from\":0,\"size\":10}";
+            }else {
+                query = "{\n" +
+                        "    \"query\" : {\n" +
+                        "        \"term\" : { \"message\" :\"" + search_parameters[0] + "\" }\n" +
+                        "    }\n" +
+                        "}";
+                System.out.println("this is query" + query);
+            }
                 // TODO Build the query
             Search search=new Search.Builder(query)
                     .addIndex("testing")
