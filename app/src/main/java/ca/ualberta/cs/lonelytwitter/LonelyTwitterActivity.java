@@ -71,6 +71,7 @@ public class LonelyTwitterActivity extends Activity {
 				getTweetsTask.execute(bodyText.getText().toString());
 
 				try{
+
                     tweetList.clear();
 					tweetList.addAll(getTweetsTask.get());
 
